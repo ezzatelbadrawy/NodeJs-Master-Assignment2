@@ -10,10 +10,10 @@
 
 #### Supported methods : POST,GET,PUT,DELETE
 
-1. **POST**: Add new user
-Required Data: firstName, lastName, email, address, password, tosAgreement
-Request:
-		Url: domain/users 
+1. **POST**: Add new user\
+Required Data: firstName, lastName, email, address, password, tosAgreement\
+Request:  
+		Url: domain/users  
 		Body:
 	
 		{
@@ -26,13 +26,13 @@ Request:
 		}
 
 	Response:
-	Success -> 200 {}
+	Success -> 200 {}\
 	Failure -> 400/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-2. **GET**: Retrieve user data for specified email 
-Required data: email and token.
-Request:
-Url: domain/users?email=<USER_EMAIL>
+2. **GET**: Retrieve user data for specified email\
+Required data: email and token\
+Request:\
+Url: domain/users?email=<USER_EMAIL>\
 Header: token: <USER_TOKEN>
 
 	Response:
@@ -49,9 +49,9 @@ Header: token: <USER_TOKEN>
 		}
 	Failure -> 400/403/404 {"Error": "<ERROR_DESCRIPTION>"}
 
-3. PUT: Update user data except the email address which used as user-ID.
-Required data: email and token
-Optional data: firstName, lastName, address, password (at least one must be specified)
+3. PUT: Update user data except the email address which used as user-ID\
+Required data: email and token\
+Optional data: firstName, lastName, address, password (at least one must be specified)  
 
 	Request:
 	Url: domain/users
@@ -68,10 +68,10 @@ Optional data: firstName, lastName, address, password (at least one must be spec
 		}
 
 	Response:
-	Success -> 200 {}
+	Success -> 200 {}\
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-4. **DELETE**: Remove user and all its related data(carts,orders) from system
+4. **DELETE**: Remove user and all its related data(carts,orders) from system\
 Required data: email and token
 
 	Request:
@@ -79,7 +79,7 @@ Required data: email and token
 	Header: token: <USER_TOKEN>
 
 	Response:
-	Success -> 200 {}
+	Success -> 200 {}\
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
 ---------------------------------------
@@ -88,7 +88,7 @@ Required data: email and token
 
 #### Supported methods : POST,GET,PUT,DELETE
  
-1. **POST**: Add new token for specified user to use it in requests for authentication
+1. **POST**: Add new token for specified user to use it in requests for authentication\
 Required data: email, password
 
 	Request:
@@ -110,7 +110,7 @@ Required data: email, password
 		} 
 	Failure -> 400/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-2. **GET**: Retrieve token data for specified tokenId 
+2. **GET**: Retrieve token data for specified tokenId\
 Required data: tokenId
 
 	Request:
@@ -126,7 +126,7 @@ Required data: tokenId
 		} 
 	Failure -> 400/404 {"Error": "<ERROR_DESCRIPTION>"}
 
-3. **PUT**: Extend token expire time for none expired tokens
+3. **PUT**: Extend token expire time for none expired tokens\
 Required data: tokenId, extend(=true)
 
 	Request:
@@ -139,17 +139,17 @@ Required data: tokenId, extend(=true)
 		}
 
 	Response:
-	Success -> 200 {}
+	Success -> 200 {}\
 	Failure -> 400/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-4. **DELETE**: Remove token from system
+4. **DELETE**: Remove token from system\
 Required data: tokenId
 
 	Request:
 	Url: domain/tokens?id=<TOKEN_ID>
 
 	Response:
-	Success -> 200 {}
+	Success -> 200 {}\
 	Failure -> 400/500 {"Error": "<ERROR_DESCRIPTION>"}
 
 ---------------------------------------
@@ -159,7 +159,7 @@ Required data: tokenId
 
 Note: on this application I added all menu-items in json file and users can only read it, and any modifications can done by administrator on server side.
  
-1. **GET**: Retrieve all menu-items
+1. **GET**: Retrieve all menu-items\
 Required data: token
 
 	Request:
@@ -181,7 +181,7 @@ Required data: token
 
 #### Supported methods : POST,GET,PUT,DELETE
  
-1. **POST**: Add new cart
+1. **POST**: Add new cart\
 Required data: array object of menu-items (each item contain itemId, size, price, quantity) and token
 
 	Request:
@@ -214,7 +214,7 @@ Required data: array object of menu-items (each item contain itemId, size, price
 		}
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-2. **GET**: Retrieve cart data for specified cartId
+2. **GET**: Retrieve cart data for specified cartId\
 Required data: cartId and token
 
 	Request:
@@ -231,8 +231,8 @@ Required data: cartId and token
 		}
 	Failure -> 400/403/404 {"Error": "<ERROR_DESCRIPTION>"}
 
-3. **PUT**: Update existing cart items and add new cart items
-Required data: cartId and token
+3. **PUT**: Update existing cart items and add new cart items\
+Required data: cartId and token\
 Optional data: array object of menu-items (each item contain itemId, size, price, quantity) (at least one must be specified)
 
 	Request:
@@ -253,8 +253,8 @@ Optional data: array object of menu-items (each item contain itemId, size, price
 		}
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-4. **DELETE**: Remove cart and all its related data(cartID at userData.carts[]) from system
-Required data: cartId and token
+4. **DELETE**: Remove cart and all its related data(cartID at userData.carts[]) from system\
+Required data: cartId and token\
 
 	Request:
 	Url: domain/carts?id=<CART_ID>
@@ -264,13 +264,13 @@ Required data: cartId and token
 	Success -> 200 {}
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-	Also we can use DELETE method to only delete one cart-item from specified cart by passing both cartId and cart-item-id as the following:
-	Request:
+	Also we can use DELETE method to only delete one cart-item from specified cart by passing both cartId and cart-item-id as the following:\
+	Request:\
 	Url: domain/carts?id=<CART_ID>&itemid=<CART_ITEM_ID>
 	Header: token: <USER_TOKEN>
 
-	Response:
-	Success -> 200 {}
+	Response:\
+	Success -> 200 {}\
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
 ---------------------------------------
@@ -278,7 +278,7 @@ Required data: cartId and token
 
 #### Supported methods : POST,GET
  
-1. **POST**: Add new order and use stripe-apis to accept payment and after that send email notification(using mailgun-apis) to user with order receipt
+1. **POST**: Add new order and use stripe-apis to accept payment and after that send email notification(using mailgun-apis) to user with order receipt\
 Required data: cartId and token
 
 	Request:
@@ -298,7 +298,7 @@ Required data: cartId and token
 		}
 	Failure -> 400/403/500 {"Error": "<ERROR_DESCRIPTION>"}
 
-2. GET: Retrieve order data for specified orderId
+2. GET: Retrieve order data for specified orderId\
 Required data: orderIdId and token
 	
 	Request:
